@@ -1,0 +1,12 @@
+all tasks to do in this website:
+1. a navebar with three routes-
+   -  to do
+   - completed
+   - calendar
+2. just add a calendar in calender route
+3.  show all to do in todo in home page with a chack box
+4. make todo items editable
+5. add delete btn to all todo items
+6. after clicking chack box item willbe add in complete route and remove from todo list
+7. emplement login system
+8. if there are no todo's then show a picture like "hurreh, no tasks"
