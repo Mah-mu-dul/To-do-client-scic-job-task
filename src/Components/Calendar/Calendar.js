@@ -2,9 +2,9 @@ import React from 'react';
 
 const Calendar = () => {
     return (
-      <div>
-        <h1 className="text-5xl text-green-400 text-center">
-          there will he a calendar{" "}
+      <div className='min-h-screen bg-rose-50'>
+        <h1 className="text-5xl text-gray-400 text-center">
+          there will be a calendar{" "}
         </h1>
       </div>
     );

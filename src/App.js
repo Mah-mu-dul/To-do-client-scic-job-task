@@ -8,9 +8,11 @@ import Calendar from "./Components/Calendar/Calendar";
 import Complete from "./Components/Complete/Complete";
 import Todo from "./Components/ToDo/Todo";
 
+
+
 function App() {
   return (
-    <div className="mx-auto max-w-[1500px]">
+    <div className="mx-auto text-black bg-white max-w-[1500px]">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,6 +22,7 @@ function App() {
         <Route path="complete" element={<Complete />} />
       </Routes>
       <Footer />
+
     </div>
   );
 }

@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 
 const navitems = [
   <li>
+    <Link to="/">Home </Link>
+  </li>,
+  <li>
     <Link to="/to-do">To-Do </Link>
   </li>,
   <li tabindex="0">
@@ -14,8 +17,8 @@ const navitems = [
 ];
 const Header = () => {
   return (
-    <div className="bg-red-200">
-      <div class="navbar bg-base-100">
+    <div className=" ">
+      <div class="navbar bg-pink-100">
         <div class="navbar-start">
           <div class="dropdown">
             <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -36,7 +39,7 @@ const Header = () => {
             </label>
             <ul
               tabindex="0"
-              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
             >
               {navitems.map((navitem) => (
                 <li>{navitem}</li>
