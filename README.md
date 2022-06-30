@@ -2,7 +2,7 @@
 ## by Mahmudul Hasan
 
 ## fetures of the site
-- you have to create an account to enjoy this feature.
+- you have to create an account to enjoy these features.
 - you can write your to do lists here. 
 - after complite a task you can chack the task.
 - you can shidule a task or event according to date and time. 
