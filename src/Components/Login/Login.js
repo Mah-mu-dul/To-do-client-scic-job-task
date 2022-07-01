@@ -110,7 +110,7 @@ const Login = () => {
               {loading || gLoading || sending ? (
                 <button className="btn btn-accent mx-auto mt-3 text-white w-full loading">
                   loading
-                </button>
+                </button> 
               ) : (
                 <button className="btn btn-accent mx-auto mt-3 text-white w-full">
                   Login

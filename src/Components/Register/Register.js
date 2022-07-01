@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import {
@@ -22,13 +22,14 @@ const Register = () => {
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
+ useEffect(() => {
+   if (user || gUser) {
+     navigate(from, { replace: true });
+   }
+ }, [user, gUser, from, navigate]);
   // const [token] = useToken(user || gUser);
   const handleGogle = () => {
     signInWithGoogle();
-        navigate(from, { replace: true });
-
-
   };
   const handlesubmit = async (event) => {
     event.preventDefault();
@@ -38,8 +39,8 @@ const Register = () => {
 
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
-    navigate(from, { replace: true });
     event.target.reset();
+   
   };
   return (
     <div className="text-white">
