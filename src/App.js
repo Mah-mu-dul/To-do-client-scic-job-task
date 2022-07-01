@@ -16,6 +16,7 @@ function App() {
   return (
     <div className="mx-auto text-black bg-white max-w-[1500px]">
       <Header />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="register" element={<Register />} />

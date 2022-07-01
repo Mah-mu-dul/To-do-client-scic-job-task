@@ -10,8 +10,6 @@ const Header = () => {
     signOut(auth);
   };
   const [user] = useAuthState(auth);
-  console.log(user);
-
   const navitems = (
     <>
       <li>
@@ -45,13 +43,13 @@ const Header = () => {
         <>
           <li>
             <button className="  box-none text-black">
-              <Link to="">{user.displayName}</Link>
+              <Link to="">{user?.displayName}</Link>
             </button>
           </li>
           <li>
             <div className="avatar online">
               <div className="w-10 rounded-full">
-                <img alt={user?.displayName[0]} src={user?.displayName} />
+                <img alt="" src={user?.displayName} />
               </div>
             </div>
           </li>
