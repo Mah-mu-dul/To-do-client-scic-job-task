@@ -22,7 +22,7 @@ const Home = () => {
     };
     console.log(taskDetais);
 
-    fetch("http://localhost:5000/addtodo", {
+    fetch("http://localhost:5000/todos", {
       method: "POST",
       headers: {
         "content-type": "application/json",
