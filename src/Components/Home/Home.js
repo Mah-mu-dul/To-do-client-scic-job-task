@@ -6,7 +6,7 @@ const Home = () => {
     return (
       <div className="h-screen bg-green-100 lg:flex md:flex justify-evenly">
         <div className="lg:w-[50%] mx-3 md:w-[40%]">
-          <h2 className="text-3xl text-center">Add a task</h2>
+          <h2 className="text-3xl text-center">Add a task j</h2>
           <div className="mx-auto">
             <form action="" className="mx-auto lg:ml-[95px]">
               <input
@@ -22,7 +22,7 @@ const Home = () => {
               />
             </form>
             <div className=" hidden lg:block mt-10 ">
-              <img className='h-[500px] mx-auto' src={todoimg} alt="" />
+              <img className='w-[400px] mx-auto' src={todoimg} alt="" />
             </div>
           </div>
         </div>

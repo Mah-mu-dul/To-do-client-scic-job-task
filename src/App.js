@@ -7,6 +7,8 @@ import Footer from "./Components/Shared/Footer";
 import Calendar from "./Components/Calendar/Calendar";
 import Complete from "./Components/Complete/Complete";
 import Todo from "./Components/ToDo/Todo";
+import Login from "./Components/Login/Login";
+import Register from "./Components/Register/Register";
 
 
 
@@ -16,6 +18,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
         <Route path="home" element={<Home />} />
         <Route path="to-do" element={<Todo />} />
         <Route path="calendar" element={<Calendar />} />

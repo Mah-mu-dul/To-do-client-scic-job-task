@@ -1,61 +1,101 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 
-const navitems = [
-  <li>
-    <Link to="/">Home </Link>
-  </li>,
-  <li>
-    <Link to="/to-do">To-Do </Link>
-  </li>,
-  <li tabindex="0">
-    <Link to="/complete">Complete</Link>
-  </li>,
-  <li>
-    <Link to="/calendar">calendar</Link>
-  </li>,
-];
 const Header = () => {
+  const handleSignout = () => {
+    // localStorage.removeItem("accessToken");
+    signOut(auth);
+  };
+  const [user] = useAuthState(auth);
+  console.log(user);
+
+  const navitems = (
+    <>
+      <li>
+        <Link to="/">Home </Link>
+      </li>
+
+      <li>
+        <Link to="/to-do">To-Do </Link>
+      </li>
+
+      <li tabIndex="0">
+        <Link to="/complete">Complete</Link>
+      </li>
+
+      <li>
+        <Link to="/calendar">calendar</Link>
+      </li>
+
+      {user ? (
+        <li>
+          <button onClick={handleSignout} className="  box-none text-black">
+            <h4>Log out</h4>
+          </button>
+        </li>
+      ) : (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
+      {user ? (
+        <>
+          <li>
+            <button className="  box-none text-black">
+              <Link to="">{user.displayName}</Link>
+            </button>
+          </li>
+          <li>
+            <div className="avatar online">
+              <div className="w-10 rounded-full">
+                <img alt={user?.displayName[0]} src={user?.displayName} />
+              </div>
+            </div>
+          </li>
+        </>
+      ) : (
+        <li></li>
+      )}
+    </>
+  );
+
   return (
     <div className=" ">
-      <div class="navbar bg-pink-100">
-        <div class="navbar-start">
-          <div class="dropdown">
-            <label tabindex="0" class="btn btn-ghost lg:hidden">
+      <div className="navbar bg-pink-100 pr-20 ">
+        <div className="navbar-start">
+          <div className="dropdown">
+            <label tabIndex="0" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
             </label>
             <ul
-              tabindex="0"
-              class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
+              tabIndex="0"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-white rounded-box w-52"
             >
-              {navitems.map((navitem) => (
-                <li>{navitem}</li>
-              ))}
+              {navitems}
             </ul>
           </div>
-          <Link to='/'>
+          <Link to="/">
             <h1 className="text-5xl">Todo</h1>
           </Link>
         </div>
-        <div class="navbar-center hidden lg:flex">
-          <ul class="menu menu-horizontal p-0">
-            {navitems.map((navitem) => (
-              <li>{navitem}</li>
-            ))}
-          </ul>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal p-0">{navitems}</ul>
         </div>
       </div>
     </div>
