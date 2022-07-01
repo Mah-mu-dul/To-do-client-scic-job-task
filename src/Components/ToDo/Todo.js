@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { AiFillDelete } from "react-icons/ai";
+import auth from "../../firebase.init";
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
+    const [user, loading] = useAuthState(auth);
+
+if (loading){
+
+  <p>
+    <progress class="progress w-56"></progress>
+  </p>
+}
+
   useEffect(() => {
-    fetch("http://localhost:5000/todos")
+    fetch(`http://localhost:5000/todos/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setTodos(data));
-  }, []);
+  }, [user]);
   const done = (id) =>{
     console.log(id)
   }
@@ -22,7 +33,7 @@ const Todo = () => {
             {todos?.map((todo) => (
               <li key={todo?._id} className='my-5'>
                 <input onClick={()=>done(todo._id)} className="bg-white mr-5 btn btn-sm border-0" type="button" value="done" />
-                {todo?.name}
+                {todo?.taskname}
               </li>
             ))}
           </ul>

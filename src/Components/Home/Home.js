@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Todo from "../ToDo/Todo";
 import todoimg from "../images/todo.jpg";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 const Home = () => {
   const taskNameRef = useRef("");
   const [user] = useAuthState(auth);
+  const [added, setAdded] = useState("");
 
   const add = (event) => {
     event.preventDefault();
@@ -32,9 +33,11 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setAdded(data);
         toast.success("task added sucessfully ");
         event.target.reset();
       });
+    console.log(added);
   };
   return (
     <div className="h-screen bg-green-100 lg:flex md:flex justify-evenly">
@@ -51,13 +54,16 @@ const Home = () => {
             {user ? (
               <button className="btn ">Add</button>
             ) : (
-              <button className=" btn"><Link to='login'>Login first</Link></button>
+              <button className=" btn">
+                <Link to="login">Login first</Link>
+              </button>
             )}
           </form>
           <div className=" hidden lg:block mt-10 ">
             <img className="w-[400px] mx-auto" src={todoimg} alt="" />
           </div>
         </div>
+      <p>{added?.acknowledged}</p>
       </div>
       <div className="lg:w-[45%] md:w-[60%]">
         <Todo />
