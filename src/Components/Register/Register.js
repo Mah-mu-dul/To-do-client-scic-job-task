@@ -26,6 +26,9 @@ const Register = () => {
   // const [token] = useToken(user || gUser);
   const handleGogle = () => {
     signInWithGoogle();
+        navigate(from, { replace: true });
+
+
   };
   const handlesubmit = async (event) => {
     event.preventDefault();
