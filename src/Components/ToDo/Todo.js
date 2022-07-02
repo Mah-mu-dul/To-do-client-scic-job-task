@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { AiFillDelete } from "react-icons/ai";
 import auth from "../../firebase.init";
 
 const Todo = () => {
+  const newtaskNameRef = useRef("");
+  let newtaskname = newtaskNameRef.current.value;
+
   const [todos, setTodos] = useState([]);
   const [e, setEdit] = useState(null);
   const [user, loading] = useAuthState(auth);
@@ -40,7 +43,24 @@ const Todo = () => {
     setEdit(todo);
   };
   const update = (e) => {
-    console.log(e);
+    console.log(e._id);
+    let newtaskname = newtaskNameRef.current.value;
+
+    console.log(newtaskname);
+    // const status = { taskname: "done" };
+    // // here will be the fetch ppart
+    // const url = `https://tragically-toonie-69979.herokuapp.com/done/${e._id}`;
+    // fetch(url, {
+    //   method: "PUT",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(status),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // window.location.reload();
+    //   });
     setEdit(null);
   };
   return (
@@ -67,30 +87,34 @@ const Todo = () => {
                 {todo?.taskname}
                 <label
                   onClick={() => edit(todo)}
-                  for="my-modal"
-                  class="btn mx-5 border-0 text-black btn-sm bg-rose-500   modal-button"
+                  htmlFor="my-modal"
+                  className="btn mx-5 border-0 text-black btn-sm bg-rose-500   modal-button"
                 >
                   Edit task
                 </label>
 
                 {/* popup */}
-                <input type="checkbox" id="my-modal" class="  modal-toggle" />
-                <div class="modal  ">
-                  <div class="modal-box bg-white text-black">
-                    <h3 class="font-bold text-lg ">
+                <input
+                  type="checkbox"
+                  id="my-modal"
+                  className="  modal-toggle"
+                />
+                <div className="modal  ">
+                  <div className="modal-box bg-white text-black">
+                    <h3 className="font-bold text-lg ">
                       write new task in the input feild{" "}
                     </h3>
                     <input
-                      // ref={taskNameRef}
+                      ref={newtaskNameRef}
                       name="task"
                       type="text"
                       className="input border-2 bg-[#3f3f3479] w-[70%]"
                     />
-                    <div class="modal-action">
+                    <div className="modal-action">
                       <label
                         onClick={() => update(e)}
-                        for="my-modal"
-                        class="btn"
+                        htmlFor="my-modal"
+                        className="btn"
                       >
                         update
                       </label>
