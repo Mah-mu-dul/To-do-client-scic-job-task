@@ -5,7 +5,7 @@ import auth from "../../firebase.init";
 
 const Todo = () => {
   const [todos, setTodos] = useState([]);
-  const  [e, setEdit] = useState(null)
+  const [e, setEdit] = useState(null);
   const [user, loading] = useAuthState(auth);
 
   let progress;
@@ -14,7 +14,7 @@ const Todo = () => {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/todos/${user?.email}`)
+    fetch(`https://tragically-toonie-69979.herokuapp.com/todos/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setTodos(data));
   }, [user]);
@@ -23,7 +23,7 @@ const Todo = () => {
     console.log(id);
     const status = { status: "done" };
     // here will be the fetch ppart
-    const url = `http://localhost:5000/done/${id}`;
+    const url = `https://tragically-toonie-69979.herokuapp.com/done/${id}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -36,13 +36,13 @@ const Todo = () => {
         // window.location.reload();
       });
   };
-  const edit = (todo)=>{
-    setEdit(todo)
-  }
-  const update =(e) =>{
+  const edit = (todo) => {
+    setEdit(todo);
+  };
+  const update = (e) => {
     console.log(e);
-    setEdit(null)
-  }
+    setEdit(null);
+  };
   return (
     <div className=" min-h-[100px]  bg-none mb-20 pb-10 overflow-scroll max-h-screen">
       <h1 className="text-5xl text-center text-black p-5 lg:block  hidden">
@@ -88,7 +88,7 @@ const Todo = () => {
                     />
                     <div class="modal-action">
                       <label
-                        onClick={()=> update(e)}
+                        onClick={() => update(e)}
                         for="my-modal"
                         class="btn"
                       >

@@ -10,7 +10,9 @@ const Complete = () => {
     progress = <progress className="progress w-56"></progress>;
   }
   useEffect(() => {
-    fetch(`http://localhost:5000/complete/${user?.email}`)
+    fetch(
+      `https://tragically-toonie-69979.herokuapp.com/complete/${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => setComplete(data));
   }, [user]);
@@ -25,7 +27,10 @@ const Complete = () => {
           <p className="text-xl text-center">{progress}</p>
           <ul className="text-green-500 mx-auto lg:w-1/2">
             {complete?.map((todo, i) => (
-              <li key={todo._id} className=" rounded-xl my-2 bg-[#443f3307] hover:bg-[#2b2a2814] px-5">
+              <li
+                key={todo._id}
+                className=" rounded-xl my-2 bg-[#443f3307] hover:bg-[#2b2a2814] px-5"
+              >
                 <del>
                   {i + 1}. {todo.taskname}
                 </del>

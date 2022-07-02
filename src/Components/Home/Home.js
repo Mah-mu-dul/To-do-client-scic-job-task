@@ -23,7 +23,7 @@ const Home = () => {
     };
     console.log(taskDetais);
 
-    fetch("http://localhost:5000/todos", {
+    fetch("https://tragically-toonie-69979.herokuapp.com/todos", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -63,7 +63,7 @@ const Home = () => {
             <img className="w-[400px] mx-auto" src={todoimg} alt="" />
           </div>
         </div>
-      <p>{added?.acknowledged}</p>
+        <p>{added?.acknowledged}</p>
       </div>
       <div className="lg:w-[45%] md:w-[60%]">
         <Todo />
