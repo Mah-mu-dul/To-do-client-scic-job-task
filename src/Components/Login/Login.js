@@ -46,7 +46,7 @@ const Login = () => {
     //   }
     // );
     // localStorage.setItem("accessToken", data.token);
-    // // console.log(data);
+    // //  (data);
     navigate(from, { replace: true });
   };
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
@@ -110,7 +110,7 @@ const Login = () => {
               {loading || gLoading || sending ? (
                 <button className="btn btn-accent mx-auto mt-3 text-white w-full loading">
                   loading
-                </button> 
+                </button>
               ) : (
                 <button className="btn btn-accent mx-auto mt-3 text-white w-full">
                   Login
